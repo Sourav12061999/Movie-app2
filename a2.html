@@ -10,13 +10,21 @@
             width: 400px;
             margin: auto;
             margin-top: 50px;
+            /* border: 1px solid red; */
         }
         #cont div{
             width: 100%;
-            height: 100px;
+            height: 250px;
         }
-        #cont img{
+        #cont img:nth-child(1){
             width: 100%;
+        }
+        .recomend{
+            width: 20%;
+            margin: 0px;
+            padding: 0px;
+            position: absolute;
+            top: 13%;
         }
     </style>
 </head>
@@ -71,7 +79,25 @@
       let p=document.createElement("p");
       p.textContent=obj.Plot;
       text.appendChild(p);
+      
+      let p1=document.createElement("p");
+      p1.textContent="Actors:-  "+obj.Actors;
+      text.appendChild(p1);
+      let p2=document.createElement("p");
+      p2.textContent="Release Date:-  "+obj.Released;
+      text.appendChild(p2);
+      let p3=document.createElement("p");
+      p3.textContent="Ratings:-  "+obj.Ratings[0].Value;
+      text.appendChild(p3);
       cont.appendChild(text);
+
+      let recomend=document.createElement("img");
+      recomend.src="./recomended.png";
+      recomend.setAttribute("class","recomend");
+      let rating=obj.Ratings[0].Value.trim().split("/");
+       if(+(rating[0])>=8.5){
+        cont.appendChild(recomend);
+       }
 
     }
 </script>
